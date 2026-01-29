@@ -67,6 +67,7 @@ const schema = new Schema(
       dailyRecipeCount: { type: Number, default: 0 }, // 判斷每日新增食譜
       lastResetDate: { type: Date, default: Date.now }, // 重置每日
     },
+    lastReadLogDate: { type: Date, default: Date.now },
     // 解鎖食譜
     unlockedRecipes: [
       {

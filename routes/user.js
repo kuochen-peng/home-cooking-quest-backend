@@ -13,6 +13,7 @@ router.get('/unlockedRecipes', auth.token, user.getUnlockedRecipes)
 router.get('/todayPoints', auth.token, auth.admin, user.todayPoints)
 router.get('/getUser', auth.token, user.getUser)
 router.patch('/refresh', auth.token, user.refresh)
+router.patch('/updateLastReadLog', auth.token, user.updateLastReadLog)
 router.delete('/logout', auth.token, user.logout)
 
 export default router

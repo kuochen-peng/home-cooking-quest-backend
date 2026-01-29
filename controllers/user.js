@@ -72,6 +72,7 @@ export const login = async (req, res) => {
         role: req.user.role,
         points: req.user.points.current,
         token,
+        lastReadLogDate: req.user.lastReadLogDate,
       },
     })
   } catch (error) {
@@ -91,8 +92,26 @@ export const profile = (req, res) => {
       points: req.user.points.current,
       totalEarned: req.user.points.totalEarned,
       pointLog: req.user.pointLog,
+      lastReadLogDate: req.user.lastReadLogDate,
     },
   })
+}
+
+export const updateLastReadLog = async (req, res) => {
+  try {
+    req.user.lastReadLogDate = Date.now()
+    await req.user.save()
+    res.status(StatusCodes.OK).json({
+      result: {
+        lastReadLogDate: req.user.lastReadLogDate,
+      },
+    })
+  } catch (error) {
+    console.log(error)
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      message: '伺服器錯誤',
+    })
+  }
 }
 
 export const refresh = async (req, res) => {

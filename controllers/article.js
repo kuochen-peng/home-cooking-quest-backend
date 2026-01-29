@@ -37,6 +37,7 @@ export const createArticle = async (req, res) => {
 
         return res.status(StatusCodes.CREATED).json({
           result,
+          log: req.user.pointLog.at(-1),
           message: `發布成功！獲得 ${mission.pointsReward} 積分`,
         })
       }

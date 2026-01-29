@@ -72,6 +72,7 @@ export const createRecipe = async (req, res) => {
         await req.user.save()
         res.status(StatusCodes.CREATED).json({
           result,
+          recipe: req.user.pointLog.at(-1),
           message: `發布成功！獲得 ${mission.pointsReward} 積分`,
         })
       }
