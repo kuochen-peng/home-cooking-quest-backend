@@ -31,6 +31,10 @@ app.use((error, req, res, _next) => {
   })
 })
 
+app.get('/', (req, res) => {
+  res.status(200).send('Server is running!')
+})
+
 app.use('/user', userRouter)
 app.use('/recipe', recipeRouter)
 app.use('/mission', missionRouter)
